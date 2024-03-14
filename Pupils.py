@@ -17,27 +17,30 @@ def SavePupil() :
        PupilIDSave = PupilIDSave.ljust(50)
    
        FirstnameSave = FirstnameVar.get()
-       FirstnameSave = FirstnameSave.ljust(50)
-   
-       SurnameSave = SurnameVar.get()
-       SurnameSave = SurnameSave.ljust(50)
-   
-       AddressSave = AddressVar.get()
-       AddressSave = AddressSave.ljust(50)
-   
-       PostCodeSave = PostCodeVar.get()
-       PostCodeSave = PostCodeSave.ljust(50)
-   
-       QualSave = QualVar.get()
-       QualSave = QualSave.ljust(50)
-       
-   
-       fileObject = open("PupilDetails.txt","a")
-       
-       fileObject.write(PupilIDSave + FirstnameSave + SurnameSave + AddressSave + PostCodeSave + QualSave + "\n")
-       fileObject.close()
-       
-       messagebox.showinfo("Confirmation","Pupil details successfully saved")
+       if any(char.isdigit() for char in FirstnameSave):
+            FirstnameSave = FirstnameSave.ljust(50)
+            messagebox.showinfo("Error","Number in Pupil Name")
+       else:
+    
+            SurnameSave = SurnameVar.get()
+            SurnameSave = SurnameSave.ljust(50)
+        
+            AddressSave = AddressVar.get()
+            AddressSave = AddressSave.ljust(50)
+        
+            PostCodeSave = PostCodeVar.get()
+            PostCodeSave = PostCodeSave.ljust(50)
+        
+            QualSave = QualVar.get()
+            QualSave = QualSave.ljust(50)
+            
+        
+            fileObject = open("PupilDetails.txt","a")
+            
+            fileObject.write(PupilIDSave + FirstnameSave + SurnameSave + AddressSave + PostCodeSave + QualSave + "\n")
+            fileObject.close()
+            
+            messagebox.showinfo("Confirmation","Pupil details successfully saved")
 
 
 
